@@ -1,0 +1,231 @@
+county,facility,commodity,risk,closing_balance,forecast_next,months_of_stock
+Turkana,Turkana Health Centre 4,"Insulin (soluble human, 10ml vial)",0.646,0.0,14.95,0.0
+Nakuru,Nakuru Health Centre 3,"Insulin (soluble human, 10ml vial)",0.637,0.0,14.44,0.0
+Turkana,Turkana Health Centre 3,Metformin 500mg (pack of 100),0.637,0.0,22.505,0.0
+Turkana,Turkana County Referral Hospital 1,ORS/zinc co-pack,0.628,0.0,146.78,0.0
+Nakuru,Nakuru Dispensary 8,Metformin 500mg (pack of 100),0.623,0.0,17.898,0.0
+Nakuru,Nakuru Dispensary 7,Metformin 500mg (pack of 100),0.599,3.0,19.06,0.176
+Nakuru,Nakuru Health Centre 2,Metformin 500mg (pack of 100),0.596,0.0,29.48,0.0
+Turkana,Turkana Health Centre 2,"Insulin (soluble human, 10ml vial)",0.59,0.0,17.216,0.0
+Nakuru,Nakuru Dispensary 6,ORS/zinc co-pack,0.588,9.0,26.296,0.34
+Nakuru,Nakuru County Referral Hospital 1,"Insulin (soluble human, 10ml vial)",0.582,2.0,34.249,0.061
+Turkana,Turkana Dispensary 6,ORS/zinc co-pack,0.581,1.0,27.887,0.045
+Nakuru,Nakuru Health Centre 3,Metformin 500mg (pack of 100),0.576,2.0,27.591,0.078
+Nakuru,Nakuru Health Centre 2,ORS/zinc co-pack,0.574,18.0,42.212,0.593
+Nakuru,Nakuru Dispensary 5,"Insulin (soluble human, 10ml vial)",0.524,3.0,7.378,0.36
+Turkana,Turkana County Referral Hospital 1,"Insulin (soluble human, 10ml vial)",0.518,15.0,43.093,0.36
+Turkana,Turkana Dispensary 7,"Insulin (soluble human, 10ml vial)",0.518,4.0,11.773,0.364
+Nakuru,Nakuru Dispensary 8,"Insulin (soluble human, 10ml vial)",0.517,3.0,9.448,0.273
+Nakuru,Nakuru Health Centre 3,ORS/zinc co-pack,0.499,16.0,41.985,0.565
+Nakuru,Nakuru County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.49,68.0,144.768,0.498
+Turkana,Turkana County Referral Hospital 1,Metformin 500mg (pack of 100),0.451,47.0,104.662,0.442
+Turkana,Turkana Health Centre 2,Metformin 500mg (pack of 100),0.446,19.0,42.687,0.438
+Nakuru,Nakuru County Referral Hospital 1,ORS/zinc co-pack,0.444,48.0,90.137,0.664
+Nakuru,Nakuru Health Centre 4,ORS/zinc co-pack,0.42,30.0,58.865,0.592
+Turkana,Turkana Dispensary 5,"Insulin (soluble human, 10ml vial)",0.418,0.0,9.731,0.0
+Turkana,Turkana Dispensary 7,Metformin 500mg (pack of 100),0.409,0.0,26.592,0.0
+Nakuru,Nakuru Dispensary 5,Metformin 500mg (pack of 100),0.403,0.0,15.24,0.0
+Nairobi,Nairobi Health Centre 4,"Insulin (soluble human, 10ml vial)",0.395,1.0,11.028,0.097
+Nairobi,Nairobi Dispensary 7,Artemether-lumefantrine 20/120 (pack of 24),0.393,0.0,17.115,0.0
+Turkana,Turkana Dispensary 5,Metformin 500mg (pack of 100),0.383,10.0,19.565,0.625
+Turkana,Turkana Dispensary 6,"Insulin (soluble human, 10ml vial)",0.38,1.0,5.842,0.143
+Kakamega,Kakamega Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.358,4.0,17.976,0.203
+Turkana,Turkana Health Centre 4,ORS/zinc co-pack,0.358,29.0,48.612,0.713
+Nakuru,Nakuru Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.358,33.0,56.881,0.643
+Nairobi,Nairobi Health Centre 2,"Insulin (soluble human, 10ml vial)",0.351,4.0,9.522,0.667
+Turkana,Turkana Dispensary 7,Artemether-lumefantrine 20/120 (pack of 24),0.33,38.0,47.014,0.809
+Nakuru,Nakuru Dispensary 7,ORS/zinc co-pack,0.327,18.0,23.477,0.871
+Nakuru,Nakuru Dispensary 5,ORS/zinc co-pack,0.327,21.0,27.729,0.875
+Nairobi,Nairobi Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.315,5.0,41.397,0.146
+Kakamega,Kakamega Health Centre 3,ORS/zinc co-pack,0.308,7.0,37.882,0.196
+Turkana,Turkana Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.304,19.0,27.448,0.606
+Nakuru,Nakuru Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.297,10.0,29.655,0.3
+Mombasa,Mombasa Dispensary 7,ORS/zinc co-pack,0.29,21.0,36.733,0.788
+Kakamega,Kakamega Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.289,36.0,40.857,1.2
+Kakamega,Kakamega Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.286,17.0,37.416,0.443
+Nairobi,Nairobi Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.278,0.0,28.838,0.0
+Kakamega,Kakamega Dispensary 6,ORS/zinc co-pack,0.276,22.0,26.948,0.857
+Turkana,Turkana Dispensary 5,ORS/zinc co-pack,0.272,26.0,32.693,0.94
+Kisumu,Kisumu Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.268,29.0,55.481,0.366
+Nairobi,Nairobi Dispensary 6,ORS/zinc co-pack,0.249,18.0,20.001,0.947
+Nakuru,Nakuru Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.246,31.0,37.678,0.795
+Turkana,Turkana Dispensary 8,"Insulin (soluble human, 10ml vial)",0.246,6.0,7.811,0.947
+Turkana,Turkana Health Centre 4,Metformin 500mg (pack of 100),0.243,28.0,39.076,0.764
+Nairobi,Nairobi Health Centre 4,ORS/zinc co-pack,0.243,0.0,47.699,0.0
+Kakamega,Kakamega Health Centre 2,Metformin 500mg (pack of 100),0.229,0.0,20.739,0.0
+Mombasa,Mombasa Dispensary 7,"Insulin (soluble human, 10ml vial)",0.229,5.0,10.958,0.455
+Nakuru,Nakuru Dispensary 7,"Insulin (soluble human, 10ml vial)",0.223,5.0,6.935,0.714
+Nairobi,Nairobi Dispensary 8,"Insulin (soluble human, 10ml vial)",0.222,0.0,6.217,0.0
+Kakamega,Kakamega Dispensary 7,"Insulin (soluble human, 10ml vial)",0.222,0.0,6.405,0.0
+Nairobi,Nairobi County Referral Hospital 1,"Insulin (soluble human, 10ml vial)",0.216,0.0,35.295,0.0
+Nairobi,Nairobi County Referral Hospital 1,Metformin 500mg (pack of 100),0.214,38.0,85.338,0.5
+Nairobi,Nairobi Dispensary 7,"Insulin (soluble human, 10ml vial)",0.213,3.0,6.008,0.75
+Nakuru,Nakuru Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.208,23.0,27.945,0.734
+Turkana,Turkana County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.202,158.0,179.251,0.849
+Nairobi,Nairobi Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.201,9.0,12.641,0.675
+Kakamega,Kakamega Dispensary 5,ORS/zinc co-pack,0.187,21.0,21.767,1.167
+Kisumu,Kisumu Dispensary 7,"Insulin (soluble human, 10ml vial)",0.185,0.0,3.59,0.0
+Mombasa,Mombasa Dispensary 7,Metformin 500mg (pack of 100),0.184,12.0,22.208,0.429
+Nairobi,Nairobi Health Centre 3,ORS/zinc co-pack,0.169,31.0,32.359,1.094
+Kisumu,Kisumu Dispensary 8,"Insulin (soluble human, 10ml vial)",0.163,3.0,3.446,0.9
+Turkana,Turkana Health Centre 3,ORS/zinc co-pack,0.152,25.0,27.596,1.119
+Kisumu,Kisumu Dispensary 8,ORS/zinc co-pack,0.148,12.0,18.042,0.878
+Nairobi,Nairobi County Referral Hospital 1,ORS/zinc co-pack,0.138,84.0,119.562,0.788
+Nakuru,Nakuru Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.126,45.0,47.719,0.894
+Nakuru,Nakuru Dispensary 6,Metformin 500mg (pack of 100),0.121,12.0,12.043,1.286
+Mombasa,Mombasa Dispensary 6,Metformin 500mg (pack of 100),0.116,13.0,16.496,0.629
+Nairobi,Nairobi Dispensary 8,ORS/zinc co-pack,0.11,26.0,24.541,1.322
+Mombasa,Mombasa County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.104,71.0,112.963,0.565
+Kisumu,Kisumu Health Centre 3,ORS/zinc co-pack,0.1,49.0,52.078,1.157
+Turkana,Turkana Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.093,33.0,27.065,1.222
+Nakuru,Nakuru Health Centre 4,"Insulin (soluble human, 10ml vial)",0.089,15.0,15.068,0.918
+Kakamega,Kakamega Dispensary 7,Metformin 500mg (pack of 100),0.087,16.0,13.66,0.914
+Nairobi,Nairobi Dispensary 5,Metformin 500mg (pack of 100),0.083,20.0,14.062,1.875
+Turkana,Turkana County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.077,180.0,153.639,1.038
+Turkana,Turkana Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.075,37.0,31.285,0.982
+Nairobi,Nairobi Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.074,68.0,64.492,1.115
+Kakamega,Kakamega Dispensary 7,ORS/zinc co-pack,0.073,34.0,26.093,1.821
+Kakamega,Kakamega Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.071,56.0,49.017,1.159
+Nairobi,Nairobi Dispensary 7,ORS/zinc co-pack,0.068,19.0,18.466,1.213
+Nairobi,Nairobi Health Centre 3,"Insulin (soluble human, 10ml vial)",0.067,15.0,10.867,1.286
+Nakuru,Nakuru Dispensary 6,Amoxicillin DT 250mg (pack of 10),0.067,22.0,17.655,1.023
+Nairobi,Nairobi Dispensary 6,Metformin 500mg (pack of 100),0.062,16.0,13.761,1.5
+Mombasa,Mombasa Health Centre 2,ORS/zinc co-pack,0.058,59.0,51.569,1.292
+Mombasa,Mombasa Health Centre 4,ORS/zinc co-pack,0.054,44.0,34.978,1.65
+Turkana,Turkana Dispensary 8,ORS/zinc co-pack,0.051,34.0,24.032,2.04
+Turkana,Turkana Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.051,41.0,34.374,1.194
+Mombasa,Mombasa Dispensary 6,"Insulin (soluble human, 10ml vial)",0.047,10.0,8.485,1.429
+Nairobi,Nairobi Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.046,51.0,43.324,0.994
+Nakuru,Nakuru Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.043,91.0,75.117,1.062
+Mombasa,Mombasa Health Centre 3,ORS/zinc co-pack,0.042,42.0,33.877,1.416
+Kisumu,Kisumu Health Centre 4,Metformin 500mg (pack of 100),0.042,35.0,30.348,1.228
+Nakuru,Nakuru Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.04,51.0,40.865,1.378
+Kisumu,Kisumu Dispensary 6,"Insulin (soluble human, 10ml vial)",0.038,9.0,6.851,1.5
+Kakamega,Kakamega Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.037,53.0,43.816,0.888
+Mombasa,Mombasa Health Centre 4,"Insulin (soluble human, 10ml vial)",0.035,14.0,10.5,0.933
+Mombasa,Mombasa Health Centre 4,Metformin 500mg (pack of 100),0.031,35.0,27.702,1.167
+Mombasa,Mombasa Health Centre 2,Metformin 500mg (pack of 100),0.029,35.0,29.561,1.373
+Kakamega,Kakamega Health Centre 2,"Insulin (soluble human, 10ml vial)",0.028,16.0,12.094,1.333
+Kisumu,Kisumu Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.025,23.0,15.198,1.255
+Kakamega,Kakamega Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.025,87.0,60.546,1.74
+Mombasa,Mombasa Dispensary 5,ORS/zinc co-pack,0.025,34.0,22.836,1.889
+Kisumu,Kisumu Health Centre 2,"Insulin (soluble human, 10ml vial)",0.024,22.0,16.553,1.179
+Kisumu,Kisumu Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.024,35.0,27.123,1.193
+Nairobi,Nairobi Dispensary 5,ORS/zinc co-pack,0.021,33.0,22.177,1.868
+Mombasa,Mombasa Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.021,32.0,19.982,2.4
+Kisumu,Kisumu Dispensary 5,ORS/zinc co-pack,0.019,41.0,30.242,2.121
+Nakuru,Nakuru Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.017,67.0,49.853,1.081
+Nairobi,Nairobi County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.016,242.0,152.208,1.624
+Kakamega,Kakamega Dispensary 8,ORS/zinc co-pack,0.016,41.0,28.969,1.836
+Nairobi,Nairobi Health Centre 2,ORS/zinc co-pack,0.016,53.0,37.1,1.529
+Nakuru,Nakuru Dispensary 6,"Insulin (soluble human, 10ml vial)",0.015,11.0,6.936,2.062
+Mombasa,Mombasa Health Centre 3,"Insulin (soluble human, 10ml vial)",0.015,18.0,12.559,1.543
+Mombasa,Mombasa Dispensary 8,ORS/zinc co-pack,0.014,36.0,22.057,1.895
+Kakamega,Kakamega Dispensary 6,"Insulin (soluble human, 10ml vial)",0.013,15.0,9.477,1.607
+Kakamega,Kakamega County Referral Hospital 1,"Insulin (soluble human, 10ml vial)",0.013,101.0,54.4,1.693
+Kakamega,Kakamega Health Centre 3,Metformin 500mg (pack of 100),0.013,44.0,29.928,1.419
+Nakuru,Nakuru County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.012,136.0,85.332,1.511
+Mombasa,Mombasa County Referral Hospital 1,Metformin 500mg (pack of 100),0.012,67.0,40.971,1.511
+Kisumu,Kisumu Health Centre 2,ORS/zinc co-pack,0.011,75.0,47.751,1.86
+Kisumu,Kisumu Health Centre 4,ORS/zinc co-pack,0.011,54.0,37.008,2.348
+Turkana,Turkana Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.011,431.0,77.266,4.992
+Kisumu,Kisumu Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.01,82.0,54.303,1.673
+Kakamega,Kakamega Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.01,72.0,41.216,1.394
+Kakamega,Kakamega Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.009,97.0,55.09,1.953
+Turkana,Turkana Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.008,30.0,16.443,1.5
+Kisumu,Kisumu County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.008,434.0,171.28,2.156
+Nairobi,Nairobi Dispensary 5,"Insulin (soluble human, 10ml vial)",0.008,15.0,6.372,5.0
+Mombasa,Mombasa Health Centre 3,Metformin 500mg (pack of 100),0.007,49.0,26.841,2.014
+Kisumu,Kisumu Dispensary 6,ORS/zinc co-pack,0.007,37.0,22.101,1.79
+Turkana,Turkana Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.006,99.0,52.377,1.789
+Kisumu,Kisumu Dispensary 7,ORS/zinc co-pack,0.006,31.0,15.96,2.514
+Mombasa,Mombasa Dispensary 8,Metformin 500mg (pack of 100),0.006,22.0,13.036,1.784
+Mombasa,Mombasa Dispensary 6,Amoxicillin DT 250mg (pack of 10),0.006,38.0,21.601,1.175
+Kisumu,Kisumu Health Centre 3,"Insulin (soluble human, 10ml vial)",0.005,22.0,12.907,1.5
+Mombasa,Mombasa Dispensary 5,"Insulin (soluble human, 10ml vial)",0.005,14.0,7.213,1.909
+Kisumu,Kisumu Dispensary 5,Metformin 500mg (pack of 100),0.005,27.0,14.404,1.742
+Nairobi,Nairobi Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.005,47.0,27.2,1.382
+Kisumu,Kisumu Dispensary 6,Metformin 500mg (pack of 100),0.005,29.0,15.482,1.554
+Mombasa,Mombasa Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.004,112.0,66.413,1.948
+Kakamega,Kakamega Health Centre 3,"Insulin (soluble human, 10ml vial)",0.004,21.0,11.962,1.75
+Kisumu,Kisumu Health Centre 2,Metformin 500mg (pack of 100),0.003,66.0,34.205,1.692
+Mombasa,Mombasa County Referral Hospital 1,ORS/zinc co-pack,0.002,312.0,93.865,4.017
+Mombasa,Mombasa Health Centre 4,Artemether-lumefantrine 20/120 (pack of 24),0.002,101.0,52.535,2.313
+Nakuru,Nakuru Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.002,55.0,27.806,1.571
+Turkana,Turkana Health Centre 3,"Insulin (soluble human, 10ml vial)",0.002,27.0,10.78,3.857
+Nairobi,Nairobi Dispensary 6,"Insulin (soluble human, 10ml vial)",0.002,19.0,5.976,3.8
+Turkana,Turkana Health Centre 2,ORS/zinc co-pack,0.001,176.0,54.115,4.513
+Kakamega,Kakamega Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.001,54.0,25.101,1.653
+Nairobi,Nairobi Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.001,66.0,32.423,2.041
+Kisumu,Kisumu County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.001,456.0,215.464,1.932
+Mombasa,Mombasa Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.001,122.0,40.033,2.794
+Nakuru,Nakuru Dispensary 8,ORS/zinc co-pack,0.001,139.0,24.467,6.95
+Kakamega,Kakamega County Referral Hospital 1,Metformin 500mg (pack of 100),0.001,714.0,107.75,6.017
+Nairobi,Nairobi Health Centre 4,Metformin 500mg (pack of 100),0.001,65.0,32.758,2.031
+Mombasa,Mombasa Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.001,99.0,41.16,2.041
+Nairobi,Nairobi Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.001,354.0,57.531,8.297
+Turkana,Turkana Dispensary 5,Artemether-lumefantrine 20/120 (pack of 24),0.001,375.0,42.372,8.094
+Mombasa,Mombasa Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.001,167.0,54.082,2.217
+Mombasa,Mombasa Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.001,61.0,27.261,1.989
+Kisumu,Kisumu Dispensary 5,"Insulin (soluble human, 10ml vial)",0.001,23.0,7.305,3.136
+Nairobi,Nairobi Dispensary 7,Metformin 500mg (pack of 100),0.001,28.0,9.878,3.0
+Turkana,Turkana Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.001,378.0,49.124,9.22
+Kakamega,Kakamega Dispensary 6,Metformin 500mg (pack of 100),0.001,29.0,13.572,1.812
+Nairobi,Nairobi Dispensary 6,Amoxicillin DT 250mg (pack of 10),0.001,158.0,22.879,6.676
+Kakamega,Kakamega Dispensary 5,Metformin 500mg (pack of 100),0.001,25.0,12.601,1.786
+Kakamega,Kakamega Dispensary 8,"Insulin (soluble human, 10ml vial)",0.001,28.0,7.977,4.2
+Turkana,Turkana Dispensary 8,Metformin 500mg (pack of 100),0.001,92.0,13.172,9.517
+Turkana,Turkana Dispensary 6,Metformin 500mg (pack of 100),0.001,59.0,12.887,3.848
+Kisumu,Kisumu County Referral Hospital 1,ORS/zinc co-pack,0.001,1165.0,186.417,7.979
+Nairobi,Nairobi County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.001,383.0,177.381,2.678
+Mombasa,Mombasa Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.001,94.0,34.514,2.37
+Nakuru,Nakuru Health Centre 2,"Insulin (soluble human, 10ml vial)",0.001,50.0,11.537,4.839
+Kakamega,Kakamega County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.001,449.0,194.405,2.135
+Kakamega,Kakamega Dispensary 7,Artemether-lumefantrine 20/120 (pack of 24),0.001,123.0,26.75,4.341
+Turkana,Turkana Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.001,145.0,62.567,2.143
+Nairobi,Nairobi Health Centre 2,Metformin 500mg (pack of 100),0.001,50.0,23.003,2.083
+Nairobi,Nairobi Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.001,57.0,26.052,1.745
+Kakamega,Kakamega Health Centre 4,"Insulin (soluble human, 10ml vial)",0.001,26.0,13.061,2.294
+Turkana,Turkana Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.001,113.0,28.582,3.054
+Kakamega,Kakamega Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.001,84.0,42.483,1.518
+Kakamega,Kakamega Health Centre 4,ORS/zinc co-pack,0.001,338.0,32.051,11.655
+Nairobi,Nairobi Health Centre 3,Metformin 500mg (pack of 100),0.001,99.0,26.155,3.622
+Nakuru,Nakuru Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.001,395.0,50.256,7.548
+Mombasa,Mombasa County Referral Hospital 1,Amoxicillin DT 250mg (pack of 10),0.001,452.0,80.123,5.06
+Nairobi,Nairobi Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.001,385.0,63.945,5.133
+Kakamega,Kakamega Dispensary 6,Amoxicillin DT 250mg (pack of 10),0.001,328.0,26.883,9.111
+Kakamega,Kakamega Health Centre 4,Metformin 500mg (pack of 100),0.001,82.0,29.402,2.412
+Nakuru,Nakuru Dispensary 7,Amoxicillin DT 250mg (pack of 10),0.001,239.0,26.123,6.829
+Kisumu,Kisumu Dispensary 7,Artemether-lumefantrine 20/120 (pack of 24),0.001,56.0,18.999,2.947
+Kisumu,Kisumu Dispensary 5,Artemether-lumefantrine 20/120 (pack of 24),0.001,85.0,26.116,2.865
+Kisumu,Kisumu Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.001,123.0,39.147,2.929
+Turkana,Turkana Health Centre 4,Amoxicillin DT 250mg (pack of 10),0.001,489.0,60.851,7.191
+Kisumu,Kisumu County Referral Hospital 1,Metformin 500mg (pack of 100),0.001,625.0,118.533,5.547
+Nakuru,Nakuru County Referral Hospital 1,Metformin 500mg (pack of 100),0.001,450.0,73.229,5.649
+Kisumu,Kisumu Health Centre 3,Amoxicillin DT 250mg (pack of 10),0.001,473.0,43.743,15.258
+Nakuru,Nakuru Health Centre 4,Metformin 500mg (pack of 100),0.0,162.0,40.128,4.19
+Kakamega,Kakamega County Referral Hospital 1,Artemether-lumefantrine 20/120 (pack of 24),0.0,613.0,233.393,2.262
+Kisumu,Kisumu Dispensary 8,Artemether-lumefantrine 20/120 (pack of 24),0.0,76.0,11.818,4.851
+Kisumu,Kisumu Dispensary 5,Amoxicillin DT 250mg (pack of 10),0.0,81.0,25.656,2.505
+Kisumu,Kisumu County Referral Hospital 1,"Insulin (soluble human, 10ml vial)",0.0,114.0,45.6,2.591
+Nairobi,Nairobi Dispensary 8,Metformin 500mg (pack of 100),0.0,37.0,15.23,2.176
+Mombasa,Mombasa Dispensary 8,"Insulin (soluble human, 10ml vial)",0.0,60.0,8.828,7.2
+Kisumu,Kisumu Dispensary 6,Amoxicillin DT 250mg (pack of 10),0.0,52.0,22.75,2.167
+Kakamega,Kakamega Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.0,79.0,27.933,2.279
+Kakamega,Kakamega Dispensary 5,Artemether-lumefantrine 20/120 (pack of 24),0.0,73.0,29.77,2.38
+Kisumu,Kisumu Dispensary 7,Metformin 500mg (pack of 100),0.0,38.0,14.054,2.591
+Kisumu,Kisumu Dispensary 8,Metformin 500mg (pack of 100),0.0,24.0,10.7,2.483
+Kisumu,Kisumu Health Centre 4,"Insulin (soluble human, 10ml vial)",0.0,30.0,12.236,2.093
+Nairobi,Nairobi Dispensary 5,Artemether-lumefantrine 20/120 (pack of 24),0.0,71.0,29.415,2.068
+Mombasa,Mombasa Dispensary 6,ORS/zinc co-pack,0.0,180.0,27.445,9.31
+Mombasa,Mombasa Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.0,63.0,24.05,2.077
+Kisumu,Kisumu Dispensary 8,Amoxicillin DT 250mg (pack of 10),0.0,46.0,14.917,2.509
+Mombasa,Mombasa Health Centre 2,"Insulin (soluble human, 10ml vial)",0.0,27.0,13.025,2.531
+Kisumu,Kisumu Health Centre 3,Metformin 500mg (pack of 100),0.0,75.0,30.207,2.528
+Mombasa,Mombasa Dispensary 6,Artemether-lumefantrine 20/120 (pack of 24),0.0,74.0,28.653,2.362
+Nairobi,Nairobi Health Centre 2,Amoxicillin DT 250mg (pack of 10),0.0,108.0,36.59,2.382
+Mombasa,Mombasa Dispensary 5,Artemether-lumefantrine 20/120 (pack of 24),0.0,61.0,24.03,2.44
+Kisumu,Kisumu Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.0,118.0,56.951,2.284
+Kisumu,Kisumu Health Centre 2,Artemether-lumefantrine 20/120 (pack of 24),0.0,179.0,68.993,2.569
+Mombasa,Mombasa Dispensary 5,Metformin 500mg (pack of 100),0.0,98.0,14.491,5.654
+Mombasa,Mombasa Health Centre 3,Artemether-lumefantrine 20/120 (pack of 24),0.0,133.0,56.737,2.242

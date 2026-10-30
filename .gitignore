@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+outputs/simulated_reports.csv
+outputs/forecast_backtest.csv

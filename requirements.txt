@@ -1,0 +1,6 @@
+numpy>=2.0
+pandas>=2.2
+scikit-learn>=1.5
+matplotlib>=3.8
+anthropic>=0.40   # optional: only for the written county briefs
+pytest>=8.0       # for the tests

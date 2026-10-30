@@ -1,0 +1,34 @@
+{
+  "forecast": {
+    "WAPE AMC baseline": 0.246,
+    "WAPE model": 0.183,
+    "bias model": -0.036,
+    "n": 2195.0
+  },
+  "risk": {
+    "Rule: lowest months of stock first": {
+      "PR-AUC": 0.439,
+      "precision, top 10 a month": 0.5,
+      "precision, top 20 a month": 0.462,
+      "precision, top 40 a month": 0.448
+    },
+    "Model (7 features, shallow trees)": {
+      "PR-AUC": 0.507,
+      "precision, top 10 a month": 0.542,
+      "precision, top 20 a month": 0.55,
+      "precision, top 40 a month": 0.467
+    },
+    "Model tried first (17 features)": {
+      "PR-AUC": 0.4,
+      "precision, top 10 a month": 0.467,
+      "precision, top 20 a month": 0.433,
+      "precision, top 40 a month": 0.379
+    }
+  },
+  "risk_test_rows": 2543,
+  "risk_test_stockouts": 348,
+  "transfers": 13,
+  "units_moved": 724,
+  "units_saved_from_expiry": 88,
+  "period": "2025-12"
+}
