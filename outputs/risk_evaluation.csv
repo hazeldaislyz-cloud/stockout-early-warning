@@ -1,4 +1,4 @@
 ,PR-AUC,"precision, top 10 a month","precision, top 20 a month","precision, top 40 a month"
-Rule: lowest months of stock first,0.439,0.5,0.462,0.448
-"Model (7 features, shallow trees)",0.507,0.542,0.55,0.467
-Model tried first (17 features),0.4,0.467,0.433,0.379
+Rule: lowest months of stock first,0.533,0.617,0.583,0.558
+"Model (7 features, shallow trees)",0.63,0.758,0.683,0.588
+Model tried first (17 features),0.613,0.717,0.662,0.577

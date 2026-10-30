@@ -41,6 +41,15 @@ def test_some_reports_missing_and_some_stockouts(data):
     assert (r["days_out_of_stock"] > 0).mean() > 0.03
 
 
+def test_deliveries_are_whole_packs_and_lumpy():
+    """Calibrated supply: whole packs of 10, and most facilities are not resupplied every month."""
+    _, r, dl = simulate(seed=3, with_deliveries=True)
+    assert (dl["units"] % 10 == 0).all()
+    r = r[r["reported"]]
+    share = r.groupby(["facility_id", "commodity"])["received"].apply(lambda s: (s > 0).mean())
+    assert 0.15 < share.median() < 0.5
+
+
 def test_targets_do_not_leak(data):
     """next_dispensed at month t must equal dispensed at t+1 for the same series."""
     _, _, d = data
