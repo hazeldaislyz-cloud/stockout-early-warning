@@ -4,6 +4,8 @@ A prototype that helps a county pharmacist in Kenya decide, each month, which fa
 
 I built this because I've spent years on the other side of the problem. At Novo Nordisk, 200,000 vials of insulin at KEMSA were close to expiring while facilities were short. We used KEMSA's own stock movement data to redistribute them, and the account went on to order another 300,000. That was done by hand, with spreadsheets and phone calls. This project asks how much of it a simple, explainable model could do every month.
 
+**[Open the live demo](https://hazeldaislyz-cloud.github.io/stockout-early-warning/)**: a map of the six counties, the month's follow-up list, the suggested transfers and each county's brief, in the browser. No installation needed.
+
 > **The facility data is simulated, but calibrated against real records.** Facility-level stock data in Kenya is not public, so `simulate.py` generates monthly reports with the same fields as a real LMIS return. Its supply side (how often facilities are resupplied, in what quantities, with how much shelf life left) is tuned to match about 1,500 real national warehouse issue records for insulin. Those records are confidential and are not in this repository. The results below show the method works on realistic data. They are not evidence about any real county.
 
 ## What it does
@@ -130,6 +132,7 @@ cd ..
 python -m pytest tests             # 10 tests
 python calibration_check.py        # simulated supply pattern vs the real-record targets
 python robustness.py               # optional, a few minutes
+python build_demo.py               # rebuilds the demo page, docs/index.html, from outputs/
 ```
 
 To get the written county briefs from a language model rather than the template, set `ANTHROPIC_API_KEY` before running the pipeline.
@@ -147,6 +150,8 @@ src/stockout/
   pipeline.py       runs everything and writes outputs/
 tests/              stock balance, supply pattern, leakage, transfer logic and number-check tests
 calibration_check.py  compares the simulation with real-record targets
+build_demo.py       builds the demo page (docs/index.html) from the outputs
+docs/               the demo page, its template and the Kenya outline (Natural Earth)
 robustness.py       re-runs the evaluation on six datasets
 ```
 

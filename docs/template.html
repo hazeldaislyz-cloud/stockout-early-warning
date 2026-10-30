@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stockout early warning, Kenya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: summary tiles, then a county map beside the ranked follow-up list, then transfers and evidence. */
+:root {
+  --ink: #1d2738;
+  --muted: #5d6779;
+  --line: #dde2ea;
+  --paper: #f6f7f9;
+  --card: #ffffff;
+  --accent: #2f6db5;
+  --high: #c2412d;
+  --med: #c77d2e;
+  --low: #8a94a6;
+  --ok: #2f7d5b;
+  --map-land: #e9edf2;
+  --map-edge: #b9c2cf;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e6eaf1; --muted: #9aa4b5; --line: #2c3442; --paper: #12161d; --card: #1a1f28;
+    --accent: #6ea3e6; --high: #ec6a55; --med: #e0a050; --low: #7d8798; --ok: #5cb88c;
+    --map-land: #232a35; --map-edge: #3d4757; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e6eaf1; --muted: #9aa4b5; --line: #2c3442; --paper: #12161d; --card: #1a1f28;
+  --accent: #6ea3e6; --high: #ec6a55; --med: #e0a050; --low: #7d8798; --ok: #5cb88c;
+  --map-land: #232a35; --map-edge: #3d4757; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.5 var(--body); }
+a { color: var(--accent); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 56px; display: grid; gap: 22px; }
+header { display: grid; gap: 6px; }
+h1, h2 { font-family: var(--display); font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: 30px; line-height: 1.15; }
+h2 { font-size: 19px; }
+.sub { color: var(--muted); max-width: 72ch; margin: 0; }
+.notice { font-size: 13px; color: var(--muted); border-left: 3px solid var(--med); padding: 2px 0 2px 10px; max-width: 80ch; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 2px; }
+.tile .n { font-family: var(--display); font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tile .l { font-size: 13px; color: var(--muted); }
+.tile.alert .n { color: var(--high); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.controls .lab { font-size: 13px; color: var(--muted); margin-right: 2px; }
+.chip { font: 500 13px var(--body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip .c { font-variant-numeric: tabular-nums; opacity: .75; margin-left: 4px; }
+select { font: 500 13px var(--body); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.main { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 16px; align-items: start; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.hint { font-size: 12px; color: var(--muted); }
+#map { width: 100%; height: auto; display: block; aspect-ratio: 1 / 1.05; }
+#map .land { fill: var(--map-land); stroke: var(--map-edge); }
+#map .fac { cursor: pointer; stroke: var(--card); }
+#map .fac.sel { stroke: var(--ink); }
+#map .lbl { fill: var(--ink); font-family: var(--display); font-weight: 600; paint-order: stroke; stroke: var(--map-land); }
+#map .flbl { fill: var(--muted); font-family: var(--body); paint-order: stroke; stroke: var(--card); }
+#map .tr { stroke: var(--accent); fill: none; }
+#map .cl { cursor: pointer; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.list { display: grid; gap: 0; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 118px 74px; gap: 10px; align-items: center; padding: 9px 4px; border-top: 1px solid var(--line); cursor: pointer; background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; color: var(--ink); font: inherit; width: 100%; }
+.row:hover, .row.sel { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.row .who { min-width: 0; }
+.row .f { font-weight: 600; font-size: 14px; }
+.row .m { font-size: 12px; color: var(--muted); }
+.risk { display: grid; gap: 3px; }
+.risk .pct { font-family: var(--display); font-weight: 600; font-variant-numeric: tabular-nums; font-size: 15px; }
+.bar { height: 5px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 3px; }
+.mos { font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.mos b { display: block; color: var(--ink); font-size: 14px; font-weight: 600; }
+.rowhead { display: grid; grid-template-columns: minmax(0, 1fr) 118px 74px; gap: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 4px 4px; }
+.rowhead span:last-child { text-align: right; }
+.empty { color: var(--muted); font-size: 14px; padding: 10px 4px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 8px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; border-top: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill { font-size: 11.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+.pill.exp { background: color-mix(in srgb, var(--med) 18%, transparent); color: var(--med); }
+.brief { white-space: pre-wrap; font-size: 13.5px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; margin: 0; font-family: var(--body); max-width: 100%; overflow-x: auto; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.evidence p { margin: 0; max-width: 68ch; }
+#prec { width: 100%; height: auto; display: block; }
+#prec text { fill: var(--muted); font: 12px var(--body); }
+#prec .v { fill: var(--ink); font: 600 12px var(--display); }
+#prec .grid { stroke: var(--line); }
+footer { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+@media (max-width: 900px) {
+  .main, .two { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 440px) {
+  .row, .rowhead { grid-template-columns: minmax(0, 1fr) 92px 62px; }
+  h1 { font-size: 25px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar i { transition: width .3s ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Stockout early warning, Kenya</h1>
+    <p class="sub">Which facilities a county pharmacist should follow up next month, and where stock can be moved before it expires. <span id="period"></span></p>
+    <div class="notice">Simulated data: 48 facilities in 6 counties. The supply pattern is calibrated against real national warehouse issue records, but no facility, figure or location here is real. Every output is an estimate for a pharmacist to check, not an instruction.</div>
+  </header>
+
+  <section class="tiles" aria-label="Summary">
+    <div class="tile alert"><span class="n" id="t-high"></span><span class="l">facility-medicines with a 50%+ chance of running out next month</span></div>
+    <div class="tile"><span class="n" id="t-tr"></span><span class="l">suggested transfers between nearby facilities</span></div>
+    <div class="tile"><span class="n" id="t-exp"></span><span class="l">units moved that would otherwise expire</span></div>
+    <div class="tile"><span class="n" id="t-prec"></span><span class="l">of the model's top 20 alerts a month were real stockouts, against <b id="t-rule"></b> for the usual rule</span></div>
+  </section>
+
+  <section class="controls" aria-label="Filters">
+    <span class="lab">County</span>
+    <span id="counties" style="display:contents"></span>
+    <span class="lab" style="margin-left:10px">Medicine</span>
+    <label for="med" class="lab" style="position:absolute;left:-9999px">Medicine</label>
+    <select id="med"></select>
+  </section>
+
+  <section class="main">
+    <div class="card">
+      <div class="card-head"><h2 id="map-title">Map</h2><span class="hint" id="map-hint"></span></div>
+      <svg id="map" role="img" aria-label="Map of facilities coloured by stockout risk"></svg>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--high)"></i>50%+ risk</span>
+        <span><i class="dot" style="background:var(--med)"></i>30 to 49%</span>
+        <span><i class="dot" style="background:var(--low)"></i>under 30%</span>
+        <span><svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--accent)" stroke-width="2"/></svg>transfer</span>
+        <span>bigger dot = bigger facility</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2 id="list-title">Follow up first</h2><span class="hint" id="list-hint"></span></div>
+      <div class="rowhead"><span>Facility and medicine</span><span>Risk next month</span><span>Stock left</span></div>
+      <div class="list" id="list"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h2 id="tr-title">Suggested transfers</h2><span class="hint">From short-dated or surplus stock to a nearby facility at risk, same county, under 120 km</span></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th class="cc">County</th><th>Medicine</th><th>From</th><th>To</th><th class="num">Units</th><th class="num">Distance</th><th class="num">Receiver risk</th><th class="num">Stock after</th><th></th></tr></thead>
+      <tbody id="tr-body"></tbody>
+    </table></div>
+  </section>
+
+  <section class="two">
+    <div class="card">
+      <div class="card-head"><h2 id="brief-title">County brief</h2><span class="hint">Every number is checked against the model output</span></div>
+      <pre class="brief" id="brief"></pre>
+    </div>
+    <div class="card evidence">
+      <h2>How good are the alerts?</h2>
+      <p>A county team can only follow up so many facilities. So the test is: of the top N alerts each month, how many really ran out? Tested on 12 months the model never saw.</p>
+      <svg id="prec" viewBox="0 0 460 190" role="img" aria-label="Share of alerts that were real stockouts, rule against model"></svg>
+      <p class="hint" id="robust"></p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Code, method and full results: <a href="https://github.com/hazeldaislyz-cloud/stockout-early-warning">github.com/hazeldaislyz-cloud/stockout-early-warning</a></span>
+    <span>Built by Daisy Mutegi. Kenya outline: Natural Earth (public domain). Facility positions are simulated.</span>
+  </footer>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+const S = { county: "All", med: "All", fac: null };
+const COUNTIES = [...new Set(D.facilities.map(f => f.county))].sort();
+const MEDS = [...new Set(D.alerts.map(a => a.med))].sort();
+// Where each county's label sits relative to its cluster, so the three western counties don't collide.
+const LABEL = { Kakamega: [0, -34, "middle"], Kisumu: [0, 56, "middle"], Nakuru: [34, 10, "start"], Nairobi: [34, 8, "start"], Mombasa: [-34, 8, "end"], Turkana: [34, 8, "start"] };
+const SIZE = { "County Referral Hospital": 2.1, "Health Centre": 1.35, "Dispensary": 1 };
+const $ = id => document.getElementById(id);
+const pct = x => Math.round(x * 100) + "%";
+const tone = r => r >= 0.5 ? "var(--high)" : r >= 0.3 ? "var(--med)" : "var(--low)";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shortFac = n => n.replace(/^(\w+) /, "").replace("County Referral Hospital", "Referral Hosp.").replace("Health Centre", "HC").replace("Dispensary", "Disp.");
+
+function inFilter(x) {
+  return (S.county === "All" || x.county === S.county) && (S.med === "All" || x.med === S.med);
+}
+
+function tiles() {
+  const R = D.results;
+  $("period").textContent = "Month: " + new Date(D.period + "-01").toLocaleDateString("en-GB", { month: "long", year: "numeric" }) + ".";
+  $("t-high").textContent = D.alerts.filter(a => a.risk >= 0.5).length;
+  $("t-tr").textContent = R.transfers;
+  $("t-exp").textContent = R.units_saved_from_expiry.toLocaleString("en-GB");
+  const m = R.risk["Model (7 features, shallow trees)"], rule = R.risk["Rule: lowest months of stock first"];
+  $("t-prec").textContent = pct(m["precision, top 20 a month"]);
+  $("t-rule").textContent = pct(rule["precision, top 20 a month"]);
+}
+
+function controls() {
+  const box = $("counties");
+  box.innerHTML = ["All", ...COUNTIES].map(c => {
+    const n = D.alerts.filter(a => a.risk >= 0.5 && (c === "All" || a.county === c)).length;
+    return `<button class="chip" data-c="${c}" aria-pressed="${S.county === c}">${c === "All" ? "All counties" : c}<span class="c">${n}</span></button>`;
+  }).join("");
+  box.querySelectorAll(".chip").forEach(b => b.onclick = () => { S.county = b.dataset.c; S.fac = null; render(); });
+  const sel = $("med");
+  if (!sel.options.length) {
+    sel.innerHTML = `<option value="All">All medicines</option>` + MEDS.map(m => `<option>${esc(m)}</option>`).join("");
+    sel.onchange = () => { S.med = sel.value; S.fac = null; render(); };
+  }
+}
+
+// Map: simple equirectangular projection in hundredths of a degree (fine near the equator).
+const X = lon => (lon - 33.5) * 100, Y = lat => (5.4 - lat) * 100;
+function facRisk(name) {
+  const rs = D.alerts.filter(a => a.facility === name && (S.med === "All" || a.med === S.med)).map(a => a.risk);
+  return rs.length ? Math.max(...rs) : 0;
+}
+
+function map() {
+  const svg = $("map");
+  let x0 = 0, y0 = 0, w = 900, h = 1040;
+  const facs = D.facilities.filter(f => S.county === "All" || f.county === S.county);
+  if (S.county !== "All") {
+    const xs = facs.map(f => X(f.lon)), ys = facs.map(f => Y(f.lat));
+    const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+    const span = Math.max(Math.max(...xs) - Math.min(...xs), (Math.max(...ys) - Math.min(...ys)) / 1.05) + 26;
+    w = span; h = span * 1.05; x0 = cx - w / 2; y0 = cy - h / 2;
+  }
+  const k = w / 900; // scale for strokes, dots and text
+  svg.setAttribute("viewBox", `${x0} ${y0} ${w} ${h}`);
+  const land = D.outline.map(r => "M" + r.map(([lo, la]) => X(lo).toFixed(1) + "," + Y(la).toFixed(1)).join("L") + "Z").join("");
+  let s = `<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>`;
+  s += `<path class="land" d="${land}" stroke-width="${2 * k}"/>`;
+
+  if (S.county === "All") {
+    // One labelled cluster per county; click to zoom in.
+    for (const c of COUNTIES) {
+      const fs = D.facilities.filter(f => f.county === c);
+      const cx = fs.reduce((a, f) => a + X(f.lon), 0) / fs.length, cy = fs.reduce((a, f) => a + Y(f.lat), 0) / fs.length;
+      const high = D.alerts.filter(a => a.county === c && a.risk >= 0.5 && (S.med === "All" || a.med === S.med)).length;
+      s += `<g class="cl" data-c="${c}" tabindex="0" role="button" aria-label="Zoom to ${c}">`;
+      for (const f of fs) {
+        const r = facRisk(f.name);
+        s += `<circle class="fac" cx="${X(f.lon)}" cy="${Y(f.lat)}" r="${7 * SIZE[f.level]}" fill="${tone(r)}" stroke-width="1.5"/>`;
+      }
+      const pos = LABEL[c] || [34, 6, "start"];
+      s += `<text class="lbl" x="${cx + pos[0]}" y="${cy + pos[1]}" text-anchor="${pos[2]}" font-size="28" stroke-width="6">${c}${high ? " · " + high : ""}</text></g>`;
+    }
+  } else {
+    for (const t of D.transfers.filter(inFilter)) {
+      const a = D.facilities.find(f => f.name === t.from), b = D.facilities.find(f => f.name === t.to);
+      const ax = X(a.lon), ay = Y(a.lat), bx = X(b.lon), by = Y(b.lat);
+      const mx = (ax + bx) / 2 - (by - ay) * 0.18, my = (ay + by) / 2 + (bx - ax) * 0.18;
+      // stop the arrow at the edge of the receiving dot
+      const rr = 18 * k * SIZE[b.level] + 3 * k, dx = bx - mx, dy = by - my, dl = Math.hypot(dx, dy) || 1;
+      const ex = bx - dx / dl * rr, ey = by - dy / dl * rr;
+      s += `<path class="tr" marker-end="url(#arr)" d="M${ax},${ay} Q${mx},${my} ${ex},${ey}" stroke-width="${Math.max(1.5, Math.min(5, t.units / 25)) * k * 3}" stroke-linecap="round" opacity=".75"/>`;
+    }
+    for (const f of facs) {
+      const r = facRisk(f.name);
+      s += `<circle class="fac${S.fac === f.name ? " sel" : ""}" data-f="${esc(f.name)}" cx="${X(f.lon)}" cy="${Y(f.lat)}" r="${18 * k * SIZE[f.level]}" fill="${tone(r)}" stroke-width="${(S.fac === f.name ? 6 : 3) * k}" tabindex="0" role="button" aria-label="${esc(f.name)}, highest risk ${pct(r)}"><title>${esc(f.name)}: highest risk ${pct(r)}</title></circle>`;
+      s += `<text class="flbl" x="${X(f.lon)}" y="${Y(f.lat) - 26 * k * SIZE[f.level]}" text-anchor="middle" font-size="${22 * k}" stroke-width="${5 * k}">${esc(shortFac(f.name))}</text>`;
+    }
+  }
+  svg.innerHTML = s;
+  svg.querySelectorAll(".cl").forEach(g => {
+    const go = () => { S.county = g.dataset.c; S.fac = null; render(); };
+    g.onclick = go; g.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+  });
+  svg.querySelectorAll("circle[data-f]").forEach(c => {
+    const go = () => { S.fac = S.fac === c.dataset.f ? null : c.dataset.f; render(); };
+    c.onclick = go; c.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+  });
+  $("map-title").textContent = S.county === "All" ? "Six counties" : S.county + " County";
+  $("map-hint").textContent = S.county === "All" ? "Click a county to zoom in. The number is its 50%+ alerts." : "Click a facility to see its alerts.";
+}
+
+function list() {
+  let rows = D.alerts.filter(inFilter);
+  if (S.fac) rows = rows.filter(a => a.facility === S.fac);
+  rows.sort((a, b) => b.risk - a.risk);
+  const shown = S.fac ? rows : rows.slice(0, 12);
+  $("list-title").textContent = S.fac ? S.fac : "Follow up first";
+  $("list-hint").textContent = S.fac ? "All medicines at this facility" : `Top ${shown.length} of ${rows.length}, ranked by the model`;
+  $("list").innerHTML = shown.length ? shown.map(a => `
+    <button class="row${S.fac === a.facility ? " sel" : ""}" data-f="${esc(a.facility)}">
+      <span class="who"><span class="f">${esc(S.county === "All" ? a.facility : shortFac(a.facility))}</span><br><span class="m">${esc(a.med)}${S.county === "All" ? "" : ""}</span></span>
+      <span class="risk"><span class="pct" style="color:${tone(a.risk)}">${pct(a.risk)}</span><span class="bar"><i style="width:${Math.max(2, a.risk * 100)}%;background:${tone(a.risk)}"></i></span></span>
+      <span class="mos"><b>${a.mos == null ? "n/a" : a.mos.toFixed(1) + " mo"}</b>${a.stock == null ? "" : a.stock + (a.stock === 1 ? " unit" : " units")}</span>
+    </button>`).join("") : `<div class="empty">No alerts for this selection.</div>`;
+  $("list").querySelectorAll(".row").forEach(b => b.onclick = () => {
+    const f = D.facilities.find(x => x.name === b.dataset.f);
+    S.county = f.county; S.fac = S.fac === f.name ? null : f.name; render();
+  });
+}
+
+function transfers() {
+  const rows = D.transfers.filter(inFilter).filter(t => !S.fac || t.to === S.fac || t.from === S.fac)
+    .sort((a, b) => b.risk - a.risk);
+  const units = rows.reduce((s, t) => s + t.units, 0), exp = rows.reduce((s, t) => s + t.expiring, 0);
+  $("tr-title").textContent = `Suggested transfers: ${rows.length}, moving ${units.toLocaleString("en-GB")} units` + (exp ? `, ${exp} of them short-dated` : "");
+  const all = S.county === "All";
+  document.querySelector("th.cc").style.display = all ? "" : "none";
+  $("tr-body").innerHTML = rows.length ? rows.map(t => `<tr>
+    ${all ? `<td>${esc(t.county)}</td>` : ""}<td>${esc(t.med)}</td><td>${esc(shortFac(t.from))}</td><td>${esc(shortFac(t.to))}</td>
+    <td class="num">${t.units}</td><td class="num">${t.km.toFixed(0)} km</td>
+    <td class="num" style="color:${tone(t.risk)};font-weight:600">${pct(t.risk)}</td>
+    <td class="num">${t.before.toFixed(1)} → ${t.after.toFixed(1)} mo</td>
+    <td>${t.expiring ? `<span class="pill exp">${t.expiring} would expire</span>` : ""}</td></tr>`).join("")
+    : `<tr><td colspan="9" class="empty">No transfers for this selection.</td></tr>`;
+}
+
+function brief() {
+  if (S.county === "All") {
+    $("brief-title").textContent = "County briefs";
+    $("brief").textContent = "Pick a county to see the one-page brief its pharmacist would get.\n\n" +
+      COUNTIES.map(c => { const n = D.alerts.filter(a => a.county === c && a.risk >= 0.5).length, t = D.transfers.filter(x => x.county === c).length;
+        return `${c}: ${n} ${n === 1 ? "alert" : "alerts"} at 50%+ risk, ${t} ${t === 1 ? "transfer" : "transfers"}`; }).join("\n");
+  } else {
+    $("brief-title").textContent = S.county + " County brief";
+    $("brief").textContent = D.briefs[S.county] || "";
+  }
+}
+
+function precision() {
+  const R = D.results.risk, rule = R["Rule: lowest months of stock first"], m = R["Model (7 features, shallow trees)"];
+  const ks = [10, 20, 40], W = 460, H = 190, L = 40, B = 160, T = 16, bw = 34;
+  const y = v => B - v * (B - T);
+  let s = "";
+  for (const g of [0, 0.25, 0.5, 0.75, 1]) s += `<line class="grid" x1="${L}" x2="${W - 8}" y1="${y(g)}" y2="${y(g)}"/><text x="${L - 6}" y="${y(g) + 4}" text-anchor="end">${g * 100}%</text>`;
+  ks.forEach((k, i) => {
+    const cx = L + 70 + i * 130, a = rule[`precision, top ${k} a month`], b = m[`precision, top ${k} a month`];
+    s += `<rect x="${cx - bw - 2}" y="${y(a)}" width="${bw}" height="${B - y(a)}" rx="2" fill="var(--low)"/>`;
+    s += `<rect x="${cx + 2}" y="${y(b)}" width="${bw}" height="${B - y(b)}" rx="2" fill="var(--accent)"/>`;
+    s += `<text class="v" x="${cx - bw / 2 - 2}" y="${y(a) - 5}" text-anchor="middle">${pct(a)}</text><text class="v" x="${cx + bw / 2 + 2}" y="${y(b) - 5}" text-anchor="middle">${pct(b)}</text>`;
+    s += `<text x="${cx}" y="${B + 18}" text-anchor="middle">top ${k} a month</text>`;
+  });
+  s += `<rect x="${W - 190}" y="4" width="10" height="10" fill="var(--low)"/><text x="${W - 176}" y="13">usual rule</text><rect x="${W - 100}" y="4" width="10" height="10" fill="var(--accent)"/><text x="${W - 86}" y="13">model</text>`;
+  $("prec").innerHTML = s;
+  const r = D.robustness, f = D.results.forecast;
+  $("robust").textContent = `Re-run on ${r.datasets} simulated datasets, the model beat the rule on the top-20 list in all of them, by ${r.top20_gain_min} to ${r.top20_gain_max} points. Its forecasts were also more accurate than a 3-month average (${pct(f["WAPE model"])} error against ${pct(f["WAPE AMC baseline"])}). On real distributor sales, though, the forecasting gain disappeared, which is why this needs testing on real facility data before anyone relies on it.`;
+}
+
+function render() { controls(); map(); list(); transfers(); brief(); }
+tiles(); precision(); render();
+</script>
+</body>
+</html>
