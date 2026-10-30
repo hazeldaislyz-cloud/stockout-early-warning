@@ -70,7 +70,7 @@ def grounded(text: str, facts: dict) -> bool:
     return numbers_in(text) <= allowed
 
 
-def llm_brief(facts: dict, client=None, model: str = "claude-sonnet-4-5") -> tuple[str, str]:
+def llm_brief(facts: dict, client=None, model: str = "claude-sonnet-5-5") -> tuple[str, str]:
     """Return (brief, source) where source is 'llm' or 'template'."""
     if client is None:
         if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -79,7 +79,7 @@ def llm_brief(facts: dict, client=None, model: str = "claude-sonnet-4-5") -> tup
         client = anthropic.Anthropic()
     msg = client.messages.create(model=model, max_tokens=500,
                                  messages=[{"role": "user", "content": PROMPT.format(facts=json.dumps(facts, indent=1))}])
-    text = msg.content[0].text
+    text = "".join(getattr(b, "text", "") for b in msg.content if getattr(b, "type", "text") == "text")
     if not grounded(text, facts):
         return template_brief(facts), "template (LLM output failed the number check)"
     return text, "llm"
